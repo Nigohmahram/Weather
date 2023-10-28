@@ -1,8 +1,11 @@
-const getArgs = require('./helpers/args');
+import { printError, printSuccess, printHelp } from './services/log.services.js';
+import getArgs from './helpers/args.js';
 const startCLI = () => {
 	const args = getArgs(process.argv);
+	console.log(args);
 	if (args.h) {
-		//save
+		printHelp();
+		//Help
 	}
 	if (args.s) {
 		//save city
