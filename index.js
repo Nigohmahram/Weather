@@ -30,6 +30,6 @@ const startCLI = () => {
 		//save token
 	}
 	//result
-	getWeather('Uzbekistan');
+	getWeather('Korea');
 };
 startCLI();
