@@ -5,12 +5,12 @@ import https from 'https';
 const getWeather = async city => {
 	//https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
-	const token = await getKeyValue(TOKEN_DICTIONARY.token);
+	const token = process.env.TOKEN ?? (await getKeyValue(TOKEN_DICTIONARY.token));
 	if (!token) {
 		throw new Error("API doesn't exist, -t [API_KEY] for saving token");
 	}
 
-	const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
+	const { data } = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
 		params: {
 			q: city,
 			appid: token,
@@ -18,6 +18,7 @@ const getWeather = async city => {
 			units: 'metric',
 		},
 	});
+	console.log(data);
 	return data;
 
 	// const url = new URL('https://api.openweathermap.org/data/2.5/weather');
